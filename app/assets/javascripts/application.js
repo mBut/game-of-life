@@ -12,3 +12,12 @@
 //
 //= require rails-ujs
 //= require_tree .
+
+(function() {
+  this.App || (this.App = {});
+
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var canvas = document.getElementById('game-of-life');
+    App.gameContext = canvas.getContext('2d');
+  });
+}).call(this);
