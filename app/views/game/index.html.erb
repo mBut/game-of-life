@@ -1,6 +1,22 @@
-<div id="game">
-  <div id="game-container">
-    <canvas id="game-of-life" width="200" height="200"></canvas>
+<div id="game-page">
+
+  <div class="game-container">
+    <div class="spacer"></div>
+    <div class="wrapper">
+      <div class="spacer"></div>
+      <%= content_tag :canvas, nil, width: @game_config.size[0], height: @game_config.size[1], data: { "pixel-size": @game_config.pixel_size } %>
+      <div class="spacer"></div>
+    </div>
+    <div class="spacer"></div>
   </div>
-  <div id="toolbar">123</div>
+
+  <div class="toolbar collapsed">
+    <div class="player-color"></div>
+    <ul class="shape-buttons">
+      <% @game_config.shapes.each do |name, mask| %>
+        <%= content_tag :li, name.humanize, class: "shape-btn", data: { shape: name } %>
+      <% end %>
+    </ul>
+  </div>
+
 </div>

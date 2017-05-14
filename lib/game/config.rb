@@ -1,20 +1,10 @@
-module Game
-  class << self
-    attr_accessor :config
-  end
+class Game::Config
+  attr_accessor :size, :pixel_size, :shapes, :interval
 
-  def self.configure
-    self.config ||= Config.new
-    yield(config)
-  end
-
-  class Config
-    attr_accessor :grid_size, :shapes, :interval
-
-    def initialize
-      @grid_size = [20, 20]
-      @shapes = {}
-      @interval = 1
-    end
+  def initialize
+    @size = [200, 200]
+    @pixel_size = 10
+    @shapes = {}
+    @interval = 1
   end
 end

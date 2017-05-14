@@ -1,18 +1,77 @@
-#game {
+$bacgkroundColor: #737373;
+$toolbarColor: #f7f7f7;
+$toolbarHeight: 50px;
+
+#game-page {
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow: none;
+  background-color: $bacgkroundColor;
 
-  #game-container {
+  .game-container {
     flex-grow: 2;
+    display: flex;
+    justify-content: space-around;
+    overflow-x: auto;
 
-    canvas {
-      border: solid black 1px;
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      canvas {
+        background-color: #fff;
+        margin: 10px 0;
+        border: solid darken($bacgkroundColor, 20%) 1px;
+        -webkit-box-shadow: 0px 0px 20px -5px;
+        -moz-box-shadow: 0px 0px 20px -5px;
+        box-shadow: 0px 0px 20px -5px;
+      }
     }
+
   }
 
-  #toolbar {
-    height: 50px;
+  .toolbar {
+    display: flex;
+    border-top: solid lighten($bacgkroundColor, 20%) 1px;
+    background-color: $toolbarColor;
+    height: $toolbarHeight;
+    -webkit-transition: height 1s;
+    transition: height 1s;
+
+    .player-color {
+      height: $toolbarHeight - 10px;
+      width: $toolbarHeight - 10px;
+      margin: 5px;
+      border-radius: 5px;
+      -webkit-box-shadow: inset 1px 1px 5px -2px rgba(0,0,0,1);
+      -moz-box-shadow: inset 1px 1px 5px -2px rgba(0,0,0,1);
+      box-shadow: inset 1px 1px 5px -2px rgba(0,0,0,1);
+    }
+
+    ul.shape-buttons {
+      flex-grow: 1;
+      margin: 0;
+      padding: 0;
+      line-height: $toolbarHeight;
+      list-style: none;
+
+      li {
+        cursor: pointer;
+        float: left;
+        height: 100%;
+        padding: 0 10px;
+
+        &:hover {
+          background-color: darken($toolbarColor, 10%);
+        }
+      }
+    }
+
+    &.collapsed {
+      height: 0;
+    }
   }
 }
 
