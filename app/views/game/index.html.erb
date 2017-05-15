@@ -4,7 +4,7 @@
     <div class="spacer"></div>
     <div class="wrapper">
       <div class="spacer"></div>
-      <%= content_tag :canvas, nil, width: @game_config.size[0], height: @game_config.size[1], data: { "pixel-size": @game_config.pixel_size } %>
+      <%= content_tag :canvas, nil, width: Game.config.canvas_width, height: Game.config.canvas_height, data: { "pixel-size": Game.config.pixel_size } %>
       <div class="spacer"></div>
     </div>
     <div class="spacer"></div>
@@ -13,8 +13,8 @@
   <div class="toolbar collapsed">
     <div class="player-color"></div>
     <ul class="shape-buttons">
-      <% @game_config.shapes.each do |name, mask| %>
-        <%= content_tag :li, name.humanize, class: "shape-btn", data: { shape: name } %>
+      <% @shapes.each do |shape| %>
+        <%= content_tag :li, shape.name.humanize, class: "shape-btn", data: { shape: shape.id } %>
       <% end %>
     </ul>
   </div>

@@ -1,13 +1,13 @@
-require "game/base"
+require "game/game"
 
 Game.configure do |config|
-  config.size = [600, 400]
+  config.canvas_size = [600, 400]
   config.pixel_size = 10
-
-  config.shapes = Game::Util.load_shapes_from_dir("#{Rails.root}/config/shapes")
-
-  config.interval = 0.5
+  config.shapes_dir = "#{Rails.root}/config/shapes"
+  config.update_interval = 0.5
 end
 
-Game::Universe.instance.add_observer(GameChannel)
-Game::Universe.start!
+universe = Game.universe
+universe.add_observer(GameChannel)
+universe.start
+at_exit { universe.stop }
