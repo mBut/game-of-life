@@ -1,4 +1,4 @@
-##### [Demo] (https://fathomless-journey-40312.herokuapp.com/)
+## [Demo](https://fathomless-journey-40312.herokuapp.com/)
 
 #### Quick start
 
@@ -7,7 +7,7 @@ Project uses ruby `2.4.1`
 Easiest way to start project is [RVM](https://rvm.io/rvm/install) since project includes both `.ruby-version` and `.ruby-gemset` files. To do so install RVM by instruction provided above and than:
 
 ```
-git clone https://mBut@gitlab.com/mBut/game_of_life.git
+git clone https://github.com/mBut/game-of-life.git
 cd game_of_life
 bundle install
 bin/rails server
