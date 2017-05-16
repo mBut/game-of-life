@@ -40,8 +40,8 @@ class Game::Universe
   def evolve
     new_grid = empty_grid
 
-    for cell_y in 0..height - 1 do
-      for cell_x in 0..width - 1 do
+    for cell_y in 0...height do
+      for cell_x in 0...width do
         new_grid[cell_y][cell_x] = evolved_cell_state(cell_x, cell_y)
       end
     end
@@ -92,11 +92,16 @@ class Game::Universe
     [0, cell_cords - 1].max..[cell_cords + 1, dimension - 1].min
   end
 
+  def add_cell(color, cell_x, cell_y)
+    grid[cell_y][cell_x] = color
+    updated
+  end
+
   # Adds shape to the universe on given coordinates.
   # Coordinates should point to the left top corner of the shape on the grid
   def add_shape(shape, color, cell_x, cell_y)
-    for shape_x in 0..shape.width - 1
-      for shape_y in 0..shape.height - 1
+    for shape_x in 0...shape.width
+      for shape_y in 0...shape.height
         x_offset = shape_x + cell_x
         y_offset = shape_y + cell_y
         grid[y_offset][x_offset] = color if shape.pattern[shape_y][shape_x] == 1

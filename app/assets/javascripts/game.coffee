@@ -13,6 +13,9 @@ class Game
     @gameChannel = App.cable.subscriptions.create "GameChannel",
       received: @updateUniverse
 
+    @$canvas.on "click", (e) =>
+      @gameChannel.perform "add_cell", x: e.offsetX, y: e.offsetY
+
   updateUniverse: (universe) =>
     self = this
     universe.forEach (row, i) ->
@@ -28,6 +31,8 @@ class Game
 
   throwShape: (shape) =>
     @gameChannel.perform "throw_shape", shape: shape
+
+  addCell: (cellX, cellY) =>
 
 
 # Start game
