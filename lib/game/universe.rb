@@ -1,3 +1,4 @@
+require "singleton"
 require "observer"
 require "concurrent/timer_task"
 
@@ -104,7 +105,9 @@ class Game::Universe
       for shape_y in 0...shape.height
         x_offset = shape_x + cell_x
         y_offset = shape_y + cell_y
-        grid[y_offset][x_offset] = color if shape.pattern[shape_y][shape_x] == 1
+        if shape.pattern[shape_y][shape_x] == 1
+          grid[y_offset][x_offset] = color
+        end
       end
     end
 

@@ -1,4 +1,4 @@
-require "game/game"
+require "game"
 
 Game.configure do |config|
   config.canvas_size = [600, 400]
